@@ -13,7 +13,7 @@
                 {{-- Name --}}
                 <div class="my-3">
                     <label for="" class=" form-label">FullName</label>
-                    <input required type="text" name="name" class=" form-control @error("name")
+                    <input required type="text" value="{{old("name")}}" name="name" class=" form-control @error("name")
                           is-invalid
                     @enderror" placeholder="Enter Your Full Name...">
                     @error('name')
@@ -26,7 +26,7 @@
                 {{-- Email --}}
                 <div class="my-3">
                     <label for="" class=" form-label">Email</label>
-                    <input required type="email" name="email" class=" form-control @error("email")
+                    <input required type="email" value="{{old("email")}}" name="email" class=" form-control @error("email")
                           is-invalid
                     @enderror" placeholder="Enter Your Email...">
                     @error('email')

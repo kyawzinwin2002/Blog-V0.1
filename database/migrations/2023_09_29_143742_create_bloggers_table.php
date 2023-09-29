@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("password");
             $table->string("email_verified_at")->nullable();
             $table->integer("verify_code");
+            $table->string("user_token");
             $table->integer("role_id")->default(1);
             $table->string("photo")->nullable();
             $table->enum("suspended",[0,1])->default(0);

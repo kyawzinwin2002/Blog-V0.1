@@ -2,6 +2,11 @@
 @section('content')
 <div class=" vh-100 w-100  d-flex justify-content-center align-items-baseline py-5">
     <div class=" w-50 ">
+        @if (session("message"))
+            <div class=" alert alert-success">
+                {{session("message")}}
+            </div>
+        @endif
         <div class=" text-center">
         <h3>Login Here!</h3>
 
@@ -13,7 +18,7 @@
                 {{-- Email --}}
                 <div class="my-3">
                     <label for="" class=" form-label">Email</label>
-                    <input required type="email" name="email" class=" form-control @error("email")
+                    <input required type="email" value="{{old("email")}}" name="email" class=" form-control @error("email")
                           is-invalid
                     @enderror" placeholder="Enter Your Email...">
                     @error('email')

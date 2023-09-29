@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,3 +29,5 @@ Route::controller(RegisterController::class)->group(function(){
     Route::get("/register","register")->name("auth.register");
     Route::post("/register/store","store")->name("auth.register.store");
 });
+
+Route::get("/",[PageController::class,"home"])->name("page.home");
