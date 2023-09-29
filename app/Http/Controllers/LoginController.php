@@ -25,6 +25,6 @@ class LoginController extends Controller
             return redirect()->back()->withErrors(["email" => "Email or Password is invalid!"]);
         }
         session(["auth" => $blogger]);
-        return redirect()->route("page.home")->with("message","Welcome ".$blogger->name);
+        return redirect()->route("page.dashboard")->with("message","Welcome ".$blogger->name);
     }
 }

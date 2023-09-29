@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PhotoUploadController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,4 +31,7 @@ Route::controller(RegisterController::class)->group(function(){
     Route::post("/register/store","store")->name("auth.register.store");
 });
 
-Route::get("/",[PageController::class,"home"])->name("page.home");
+Route::prefix("dashboard")->group(function(){
+    Route::get("/",[PageController::class,"dashboard"])->name("page.dashboard");
+    Route::post("/photo",[PhotoUploadController::class,"upload"])->name("page.dashboard.photo");
+});
