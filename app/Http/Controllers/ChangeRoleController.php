@@ -14,7 +14,6 @@ class ChangeRoleController extends Controller
         $user = Blogger::find($user_id);
         $user->role_id = $role_id;
         $user->update();
-        session(["auth" => $user]);
         return redirect()->back();
     }
 }

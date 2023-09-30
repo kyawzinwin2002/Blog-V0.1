@@ -1,9 +1,13 @@
 @extends('layouts.dashboard')
 @section('content')
+@if (is_null(session("auth")->email_verified_at))
+<div class=" alert alert-info">
+    You need to verify your account <a href="{{route('account.verify')}}">Here</a>.
+</div>
+@endif
 <div class=" d-flex my-4 gap-5 align-items-start">
     {{-- Photo & Uploader --}}
     <div class=" d-flex flex-column">
-
     <img src="@if (!is_null(session("auth")->photo))
     {{asset('storage/' . session("auth")->photo)}}
     @else

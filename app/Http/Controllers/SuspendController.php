@@ -12,7 +12,6 @@ class SuspendController extends Controller
         $user = Blogger::find($id);
         $user->suspended = "0";
         $user->update();
-        session(["user" => $user]);
         return redirect()->back();
     }
 
@@ -21,7 +20,6 @@ class SuspendController extends Controller
         $user = Blogger::find($id);
         $user->suspended = "1";
         $user->update();
-        session(["user" => $user]);
         return redirect()->back();
     }
 }

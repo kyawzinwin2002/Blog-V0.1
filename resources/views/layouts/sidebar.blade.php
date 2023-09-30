@@ -35,14 +35,18 @@
     <div class=" my-3">
         <h5>Profile Management</h5>
         <div class="list-group my-3">
-            <a href="{{route("page.profile")}}" class="  list-group-item list-group-item-action">Profile </a>
+            <a href="{{route("page.profile")}}" class="  list-group-item list-group-item-action">Profile
+                @if (is_null(session("auth")->email_verified_at))
+                <span class=" badge bg-danger">Need Verify!</span>
+                @endif
+            </a>
             <a href="{{route("page.profile")}}" class="  list-group-item list-group-item-action">Change Password </a>
         </div>
     </div>
     {{-- Logout --}}
     <div class=" my-3">
         <div class="list-group my-3">
-            <a href="{{route("page.dashboard.logout")}}" class="list-group-item-danger  list-group-item list-group-item-action ">Logout</a>
+            <a href="{{route("page.dashboard.logout")}}" class="list-group-item-danger bg-danger text-white  list-group-item list-group-item-action ">Logout</a>
         </div>
     </div>
 </div>
