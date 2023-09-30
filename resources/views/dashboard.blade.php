@@ -6,7 +6,7 @@
     </div>
 @endif
 
-<div class="row gap-5">
+<div class="row gap-5 justify-content-center">
     <div class="col-3">
        @include('layouts.sidebar')
     </div>

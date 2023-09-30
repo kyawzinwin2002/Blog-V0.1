@@ -3,7 +3,8 @@
     <div class=" d-flex flex-column">
     <img src="{{ asset('storage/' . session("auth")->photo) }}" class="rounded-5" width="200" alt="">
     <div class=" mt-5">
-        <form action="{{route("page.dashboard.photo")}}" method="POST" enctype="multipart/form-data" class=" input-group">
+        <h5>Upload Your Profile Picture</h5>
+        <form action="{{route("page.dashboard.photo")}}" method="POST" enctype="multipart/form-data" class="mt-3 input-group">
             @csrf
             <input type="file" name="photo" placeholder="Choose Your Photo.." accept="image/png,image/jpg,image/jpeg">
             <button class=" btn btn-primary">Upload</button>
@@ -11,7 +12,7 @@
     </div>
     </div>
 
-    <div class=" d-flex flex-column gap-3">
+    <div class=" d-flex flex-column gap-3 ">
         {{-- Name and Role --}}
        <div class=" d-flex gap-2">
         <h3>{{session("auth")->name}}</h3>
