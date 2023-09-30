@@ -18,11 +18,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware("guest")->group(function(){
+Route::get("/",[PageController::class,"home"])->name("page.home");
 
-    Route::get('/', function () {
-        return view('welcome');
-    })->name("page.welcome");
+Route::middleware("guest")->group(function(){
 
     Route::controller(LoginController::class)->group(function(){
         Route::get("/login","login")->name("auth.login");
@@ -38,8 +36,11 @@ Route::middleware("guest")->group(function(){
 
 
 Route::prefix("dashboard")->middleware("auth")->group(function(){
-    Route::get("/",[PageController::class,"dashboard"])->name("page.dashboard");
-    
+    Route::controller(PageController::class)->group(function(){
+        Route::get("/","dashboard")->name("page.dashboard");
+        Route::get("/profile","profile")->name("page.profile");
+    });
+
     Route::post("/photo",[PhotoUploadController::class,"upload"])->name("page.dashboard.photo");
 
     Route::get("/logout",[LogoutController::class,"logout"])->name("page.dashboard.logout");

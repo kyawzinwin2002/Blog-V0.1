@@ -1,3 +1,5 @@
+@extends('layouts.dashboard')
+@section('content')
 <div class=" d-flex my-4 gap-5 align-items-start">
     {{-- Photo & Uploader --}}
     <div class=" d-flex flex-column">
@@ -31,3 +33,5 @@
        </div>
     </div>
 </div>
+
+@endsection
