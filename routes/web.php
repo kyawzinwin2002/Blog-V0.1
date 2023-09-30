@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\BloggerController;
+use App\Http\Controllers\ChangeRoleController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PhotoUploadController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SuspendController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,6 +42,17 @@ Route::prefix("dashboard")->middleware("auth")->group(function(){
     Route::controller(PageController::class)->group(function(){
         Route::get("/","dashboard")->name("page.dashboard");
         Route::get("/profile","profile")->name("page.profile");
+    });
+
+    Route::controller(BloggerController::class)->group(function(){
+        Route::get("/users","index")->name("users.index");
+    });
+
+    Route::post("/users/role",[ChangeRoleController::class,"changeRole"])->name("users.role");
+
+    Route::controller(SuspendController::class)->group(function(){
+        Route::get("/users/active/{id}","active")->name("users.active");
+        Route::get("/users/ban/{id}","ban")->name("users.ban");
     });
 
     Route::post("/photo",[PhotoUploadController::class,"upload"])->name("page.dashboard.photo");

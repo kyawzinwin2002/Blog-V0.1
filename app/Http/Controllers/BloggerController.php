@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreBloggerRequest;
 use App\Http\Requests\UpdateBloggerRequest;
 use App\Models\Blogger;
+use GuzzleHttp\Psr7\Request;
 
 class BloggerController extends Controller
 {
@@ -13,8 +14,11 @@ class BloggerController extends Controller
      */
     public function index()
     {
-        //
+        $users = Blogger::paginate(10)->withQueryString();
+        return view("Users.users",compact("users"));
     }
+
+   
 
     /**
      * Show the form for creating a new resource.

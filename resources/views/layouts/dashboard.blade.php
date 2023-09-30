@@ -19,16 +19,16 @@
             </div>
         @endif
         <div class="row gap-5 justify-content-center">
-            <div class="col-3">
+            <div class="col-2">
                 @include('layouts.sidebar')
             </div>
-            <div class="col-8">
+            <div class="col-9">
                 @yield('content')
             </div>
         </div>
     </div>
 
-    <link rel="stylesheet" href="{{ asset('js/bootstrap.bundle.min.js') }}">
+    <script src="{{asset("js/bootstrap.bundle.min.js")}}"></script>
 </body>
 
 </html>

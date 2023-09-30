@@ -11,13 +11,13 @@
     <div class=" my-3">
         <h5>User Management</h5>
         <div class="list-group my-3">
-            <a href="{{route("page.profile")}}" class="  list-group-item list-group-item-action">User List </a>
+            <a href="{{route("users.index")}}" class="  list-group-item list-group-item-action">User List </a>
 
         </div>
     </div>
     {{-- Article Controller --}}
     <div class=" my-3">
-        <h5>Articles Management</h5>
+        <h5>Articles</h5>
         <div class="list-group my-3">
             <a href="{{route("page.profile")}}" class="  list-group-item list-group-item-action">Create New Article </a>
             <a href="{{route("page.profile")}}" class="  list-group-item list-group-item-action">Created Articles </a>
@@ -25,7 +25,7 @@
     </div>
     {{-- Category Controller --}}
     <div class=" my-3">
-        <h5>Category Management</h5>
+        <h5>Categories</h5>
         <div class="list-group my-3">
             <a href="{{route("page.profile")}}" class="  list-group-item list-group-item-action">Create New Category</a>
             <a href="{{route("page.profile")}}" class="  list-group-item list-group-item-action">Created Categories</a>
