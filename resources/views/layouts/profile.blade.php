@@ -1,7 +1,12 @@
 <div class=" d-flex my-4 gap-5 align-items-start">
     {{-- Photo & Uploader --}}
     <div class=" d-flex flex-column">
-    <img src="{{ asset('storage/' . session("auth")->photo) }}" class="rounded-5" width="200" alt="">
+
+    <img src="@if (!is_null(session("auth")->photo))
+    {{asset('storage/' . session("auth")->photo)}}
+    @else
+    {{asset("storage/photos/profile.jpg")}}
+    @endif" class="rounded-5" width="200" alt="">
     <div class=" mt-5">
         <h5>Upload Your Profile Picture</h5>
         <form action="{{route("page.dashboard.photo")}}" method="POST" enctype="multipart/form-data" class="mt-3 input-group">
