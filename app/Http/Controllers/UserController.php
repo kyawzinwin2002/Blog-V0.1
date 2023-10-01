@@ -2,23 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreBloggerRequest;
-use App\Http\Requests\UpdateBloggerRequest;
-use App\Models\Blogger;
-use GuzzleHttp\Psr7\Request;
+use App\Models\User;
+use Illuminate\Http\Request;
 
-class BloggerController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $users = Blogger::paginate(10)->withQueryString();
+        $users = User::paginate(10)->withQueryString();
         return view("Users.users",compact("users"));
     }
-
-   
 
     /**
      * Show the form for creating a new resource.
@@ -31,7 +27,7 @@ class BloggerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreBloggerRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -39,7 +35,7 @@ class BloggerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Blogger $blogger)
+    public function show(string $id)
     {
         //
     }
@@ -47,7 +43,7 @@ class BloggerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Blogger $blogger)
+    public function edit(string $id)
     {
         //
     }
@@ -55,7 +51,7 @@ class BloggerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBloggerRequest $request, Blogger $blogger)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -63,7 +59,7 @@ class BloggerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Blogger $blogger)
+    public function destroy(string $id)
     {
         //
     }

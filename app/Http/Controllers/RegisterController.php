@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Blogger;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -17,19 +17,19 @@ class RegisterController extends Controller
     {
         $request->validate([
             "name" => "required|string|min:3|max:200",
-            "email" => "required|unique:bloggers,email",
+            "email" => "required|unique:users,email",
             "password" => "required|min:8|confirmed"
         ]);
 
         $verify_code = rand(000000,999999);
         logger("Your Verification code is ".$verify_code);
-        $blogger = new Blogger();
-        $blogger->name = $request->name;
-        $blogger->email = $request->email;
-        $blogger->password = Hash::make($request->password);
-        $blogger->verify_code = $verify_code;
-        $blogger->user_token = md5($verify_code);
-        $blogger->save();
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->verify_code = $verify_code;
+        $user->user_token = md5($verify_code);
+        $user->save();
         return redirect()->route("auth.login")->with("message","Registered Successfully");
     }
 }

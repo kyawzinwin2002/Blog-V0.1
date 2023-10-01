@@ -17,7 +17,7 @@ class IsAuthenticated
     {
         if(!$request->session()->has("auth"))
         {
-            return redirect()->route("page.welcome");
+            return redirect()->route("page.home");
         }
         return $next($request);
     }

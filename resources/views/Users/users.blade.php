@@ -28,29 +28,31 @@
                     <td>
                         <div class=" d-flex gap-2">
                             {{-- Change Role Dropdown --}}
+                            @can("viewAny",$user)
+                            @endcan
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Change Role
+                                Change Role
                                 </button>
                                 <ul class="dropdown-menu">
-                                  <li>
+                                <li>
                                     <form action="{{route("users.role")}}" method="POST">
                                         @csrf
                                         <input type="hidden" value="2" name="role_id">
                                         <input type="hidden" value="{{$user->id}}" name="id">
                                         <button class="dropdown-item">Administrator</button>
                                     </form>
-                                  </li>
-                                  <li>
+                                </li>
+                                <li>
                                     <form action="{{route("users.role")}}" method="POST">
                                         @csrf
                                         <input type="hidden" value="1" name="role_id">
                                         <input type="hidden" value="{{$user->id}}" name="id">
                                         <button class="dropdown-item">User</button>
                                     </form>
-                                  </li>
+                                </li>
                                 </ul>
-                              </div>
+                            </div>
                               {{-- Active Suspend --}}
                               @if ($user->suspended)
                               <a href="{{route("users.active",["id" => $user->id])}}" class=" btn btn-outline-danger">Suspended</a>

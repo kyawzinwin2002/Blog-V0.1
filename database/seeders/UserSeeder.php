@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Blogger;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
-class BloggerSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,7 +16,7 @@ class BloggerSeeder extends Seeder
     {
         $verify_code = rand(000000,999999);
 
-        Blogger::factory()->create([
+        User::factory()->create([
             "name" => "admin",
             "email" => "admin@gmail.com",
             "password" => Hash::make("password"),
@@ -28,7 +28,7 @@ class BloggerSeeder extends Seeder
         $verify_code2 = rand(000000,999999);
 
 
-        Blogger::factory()->create([
+        User::factory()->create([
             "name" => "Kyaw Zin Win",
             "email" => "kyaw@gmail.com",
             "password" => Hash::make("password"),
@@ -40,7 +40,7 @@ class BloggerSeeder extends Seeder
         $verify_code3 = rand(000000,999999);
 
 
-        Blogger::factory()->create([
+        User::factory()->create([
             "name" => "Poe",
             "email" => "poe@gmail.com",
             "password" => Hash::make("password"),
@@ -49,6 +49,6 @@ class BloggerSeeder extends Seeder
             "role_id" => 1,
         ]);
 
-        Blogger::factory(10)->create();
+        User::factory(10)->create();
     }
 }

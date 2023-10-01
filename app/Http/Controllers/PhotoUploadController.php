@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Blogger;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,10 +14,10 @@ class PhotoUploadController extends Controller
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
         $path = $request->file("photo")->store("photos","public");
-        $blogger = Blogger::find(session("auth")->id);
-        $blogger->photo = $path;
-        $blogger->update();
-        session(["auth" => $blogger]);
+        $user = User::find(session("auth")->id);
+        $user->photo = $path;
+        $user->update();
+        session(["auth" => $user]);
         return redirect()->back()->with("message","Photo Uploaded Successfully!");
     }
 }

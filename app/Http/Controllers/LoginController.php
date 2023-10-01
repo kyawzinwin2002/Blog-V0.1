@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Blogger;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -16,15 +16,15 @@ class LoginController extends Controller
     public function check(Request $request)
     {
         $request->validate([
-            "email" => "required|string|exists:bloggers,email",
+            "email" => "required|string|exists:users,email",
             "password" => "required|min:8"
         ],["email.exists" => "Email or Password is invalid!"]);
 
-        $blogger = Blogger::where("email",$request->email)->first();
-        if(!Hash::check($request->password,$blogger->password)){
+        $user = User::where("email",$request->email)->first();
+        if(!Hash::check($request->password,$user->password)){
             return redirect()->back()->withErrors(["email" => "Email or Password is invalid!"]);
         }
-        session(["auth" => $blogger]);
-        return redirect()->route("page.home")->with("message","Welcome ".$blogger->name);
+        session(["auth" => $user]);
+        return redirect()->route("page.home")->with("message","Welcome ".$user->name);
     }
 }

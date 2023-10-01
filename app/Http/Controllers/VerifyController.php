@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Blogger;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class VerifyController extends Controller
@@ -14,7 +14,7 @@ class VerifyController extends Controller
 
     public function check(Request $request)
     {
-        $user = Blogger::find(session("auth")->id);
+        $user = User::find(session("auth")->id);
         if($user->verify_code != $request->verify_code){
             return redirect()->back()->withErrors(["verify_code" => "Verification code is invalid"]);
         }

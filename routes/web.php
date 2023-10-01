@@ -8,6 +8,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PhotoUploadController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SuspendController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerifyController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,20 +50,22 @@ Route::prefix("dashboard")->middleware("auth")->group(function(){
         Route::get("/profile","profile")->name("page.profile");
     });
 
-    //For User List
-    Route::controller(BloggerController::class)->group(function(){
+    //Admin Role
+    // (1) For User List
+    Route::controller(UserController::class)->group(function(){
         Route::get("/users","index")->name("users.index");
     });
 
-    //To change user's role as an admin
+    // (2) To change user's role as an admin
     Route::post("/users/role",[ChangeRoleController::class,"changeRole"])->name("users.role");
 
-    //active or ban user as an admin
+    // (3) active or ban user as an admin
     Route::controller(SuspendController::class)->group(function(){
         Route::get("/users/active/{id}","active")->name("users.active");
         Route::get("/users/ban/{id}","ban")->name("users.ban");
     });
 
+        //User also can
     //To Verify account with verify_code
     Route::controller(VerifyController::class)->group(function(){
         Route::get("/verify","verify")->name("account.verify");

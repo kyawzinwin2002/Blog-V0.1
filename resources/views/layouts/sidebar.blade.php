@@ -36,9 +36,11 @@
         <h5>Profile Management</h5>
         <div class="list-group my-3">
             <a href="{{route("page.profile")}}" class="  list-group-item list-group-item-action">Profile
+
                 @if (is_null(session("auth")->email_verified_at))
                 <span class=" badge bg-danger">Need Verify!</span>
                 @endif
+
             </a>
             <a href="{{route("page.profile")}}" class="  list-group-item list-group-item-action">Change Password </a>
         </div>
